@@ -12,4 +12,35 @@ class ConsoleController extends Controller
     {
         return view('console.dashboard');
     }
+
+    public function loginForm()
+    {
+        return view('console.login');
+    }
+
+    public function login()
+    {
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+
+        ]);
+
+        if(auth()->attempt($attributes))
+        {
+            return redirect('/console/dashboard');          
+        }
+        
+        return back()
+            ->withInput()
+            ->withErrors(['email' => 'Invalid email/password input'])
+        ;
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
+
 }

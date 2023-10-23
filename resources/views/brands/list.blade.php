@@ -27,11 +27,26 @@
     
     <hr>
     <section class="w3-padding">
-        <ul id="dashboard">
-        <li><a href="/console/brands/list">Manage car brands</a></li>
-        <li><a href="/console/carmodels/list">Manage car models</a></li>
-        <li><a href="/console/parts/list">Manage spare parts</a></li>
-        </ul>
+       <h2>Manage Brands</h2>
+       <table class="w3-table w3-tripped w3-bordered w3-margin-bottom">
+            <tr class="w3-red">
+                <th></th>
+                <th>Title</th>
+                <th></th> 
+                <th></th>            
+            </tr>
+
+            <?php foreach($brands as $key => $value): ?>
+            <tr>
+                <td><?= $value->id ?></td>
+                <td><?= $value->name ?></td>
+                <td><a href="/console/brands/edit/<?= $value->id ?>">Edit</a></td>
+                <td><a href="/console/brands/delete/<?= $value->id ?>">Delete</a></td>
+            </tr>
+            <?php endforeach; ?>        
+        </table>
+
+        <a href="/console/brands/add/" class="w3-button w3-green">Add brand</a>
     </section>
 </body>
 </html>
