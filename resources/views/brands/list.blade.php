@@ -45,6 +45,10 @@
             </tr>
             <?php endforeach; ?>        
         </table>
+        <?php if(session()->has('message')): ?>
+            <br/>
+            <div class="w3-text-red"><?= session()->get('message'); ?></div>
+        <?php endif ?>
 
         <a href="/console/brands/add/" class="w3-button w3-green">Add brand</a>
     </section>
